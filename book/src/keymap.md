@@ -297,7 +297,35 @@ This layer is a kludge of mappings, mostly pickers.
 | `/`     | Global search in workspace folder                                       | `global_search`                            |
 | `?`     | Open command palette                                                    | `command_palette`                          |
 
+<<<<<<< HEAD
 > 💡 Global search displays results in a fuzzy picker, use `Space + '` to bring it back up after opening a file.
+=======
+| Key     | Description                                                             | Command                             |
+| -----   | -----------                                                             | -------                             |
+| `f`     | Open file picker                                                        | `file_picker`                       |
+| `b`     | Open buffer picker                                                      | `buffer_picker`                     |
+| `j`     | Open jumplist picker                                                    | `jumplist_picker`                   |
+| `k`     | Show documentation for item under cursor in a [popup](#popup) (**LSP**) | `hover`                             |
+| `s`     | Open document symbol picker (**LSP**)                                   | `symbol_picker`                     |
+| `S`     | Open workspace symbol picker (**LSP**)                                  | `workspace_symbol_picker`           |
+| `g`     | Open document diagnostics picker (**LSP**)                              | `diagnostics_picker`                |
+| `G`     | Open workspace diagnostics picker (**LSP**)                             | `workspace_diagnostics_picker`
+| `r`     | Rename symbol (**LSP**)                                                 | `rename_symbol`                     |
+| `a`     | Apply code action  (**LSP**)                                            | `code_action`                       |
+| `'`     | Open last fuzzy picker                                                  | `last_picker`                       |
+| `w`     | Enter [window mode](#window-mode)                                       | N/A                                 |
+| `p`     | Paste system clipboard after selections                                 | `paste_clipboard_after`             |
+| `P`     | Paste system clipboard before selections                                | `paste_clipboard_before`            |
+| `y`     | Join and yank selections to clipboard                                   | `yank_joined_to_clipboard`          |
+| `Y`     | Yank main selection to clipboard                                        | `yank_main_selection_to_clipboard`  |
+| `R`     | Replace selections by clipboard contents                                | `replace_selections_with_clipboard` |
+| `/`     | Global search in workspace folder                                       | `global_search`                     |
+| `?`     | Open command palette                                                    | `command_palette`                   |
+| `e`     | Open or focus explorer                                                  | `toggle_or_focus_explorer`          |
+| `E`     | open explorer recursion                                                 | `open_explorer_recursion`           |
+
+> TIP: Global search displays results in a fuzzy picker, use `space + '` to bring it back up after opening a file.
+>>>>>>> b652f964 (tree helper and file explorer)
 
 ##### Popup
 
@@ -452,3 +480,35 @@ Keys to use within prompt, Remapping currently not supported.
 | `Tab`                                       | Select next completion item                                             |
 | `BackTab`                                   | Select previous completion item                                         |
 | `Enter`                                     | Open selected                                                           |
+
+# File explorer
+Keys to use within explorer, Remapping currently not supported.
+
+| Key                      | Description                                                            |
+| -----                    | -------------                                                          |
+| `Escape`                 | Back to editor                                                         |
+|  `Ctrl-c`                | Close explorer                                                         |
+|  `Enter`                 | Open file or toggle dir selected                                       |
+| `b`                      | Back to current root's parent                                          |
+| `f`                      | Filter items                                                           |
+| `z`                      | Fold currrent level                                                    |
+| `k`, `Shift-Tab`, `Up`   | select previous item                                                   |
+| `j`, `Tab`, `Down`       | select next item                                                       |
+| `h`                      | Scroll left                                                            |
+| `l`                      | Scroll right                                                           |
+| `G`                      | Move to last item                                                      |
+| `Ctrl-d`                 | Move down half page                                                    |
+| `Ctrl-u`                 | Move up half page                                                      |
+| `Shift-d`                | Move down a page                                                       |
+| `Shift-u`                | Move up a page                                                         |
+| `/`                      | Search item                                                            |
+| `?`                      | Search item reverse                                                    |
+| `n`                      | Repeat last search                                                     |
+| `Shift-n`                | Repeat last search reverse                                             |
+| `gg`                     | Move to first item                                                     |
+| `ge`                     | Move to last item                                                      |
+| `gc`                     | Make current dir as root dir                                           |
+| `mf`                     | Create new file under current item's parent                            |
+| `md`                     | Create new dir  under current item's parent                            |
+| `rf`                     | Remove file selected                                                   |
+| `rd`                     | Remove dir selected                                                    |

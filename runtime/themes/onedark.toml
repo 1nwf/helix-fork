@@ -86,7 +86,15 @@
 "ui.menu.selected" = { fg = "black", bg = "blue" }
 "ui.menu.scroll" = { fg = "white", bg = "light-gray" }
 
+<<<<<<< HEAD
 "ui.debug" = { fg = "red" }
+=======
+"ui.explorer.file" = { fg = "white" }
+"ui.explorer.dir" = { fg = "blue" }
+"ui.explorer.exe" = { fg = "white" }
+"ui.explorer.focus" = { modifiers = ["reversed"] }
+"ui.explorer.unfocus" = { bg = "light-gray" }
+>>>>>>> b652f964 (tree helper and file explorer)
 
 [palette]
 

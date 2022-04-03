@@ -134,6 +134,12 @@
 "ui.bufferline" = { fg = "nord5", bg = "nord1" }
 "ui.bufferline.active" = { fg = "nord6", bg = "nord2", underline = { color = "nord8", style = "line" }, modifiers = [ "italic" ] }
 
+"ui.explorer.file" = { fg = "nord6" }
+"ui.explorer.dir" = { fg = "nord8" }
+"ui.explorer.exe" = { fg = "nord6" }
+"ui.explorer.focus" = { modifiers = ["reversed"] }
+"ui.explorer.unfocus" = { bg = "nord2" }
+
 [palette]
 # Polar Night is made up of four darker colors that are commonly used for base elements like backgrounds or text color in bright ambiance designs.
 #

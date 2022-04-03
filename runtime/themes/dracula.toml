@@ -114,6 +114,12 @@
 "definition"                      = { underline = { color = "cyan"                                        } }
 
 
+"ui.explorer.file" = { fg = "foreground" }
+"ui.explorer.dir" = { fg = "cyan" }
+"ui.explorer.exe" = { fg = "foreground" }
+"ui.explorer.focus" = { modifiers = ["reversed"] }
+"ui.explorer.unfocus" = { bg = "secondary_highlight" }
+
 [palette]
 foreground        = "#f8f8f2"
 background        = "#282A36"
