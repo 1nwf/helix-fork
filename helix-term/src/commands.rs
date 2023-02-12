@@ -490,10 +490,15 @@ impl MappableCommand {
         record_macro, "Record macro",
         replay_macro, "Replay macro",
         command_palette, "Open command pallete",
+// <<<<<<< HEAD
         open_or_focus_explorer, "Open or focus explorer",
         reveal_current_file, "Reveal current file in explorer",
         // toggle_or_focus_explorer, "toggle or focus explorer",
         // open_explorer_recursion, "open explorer recursion",
+// =======
+//         toggle_or_focus_explorer, "Toggle or focus explorer",
+//         reveal_current_file, "Reveal current file in explorer",
+// >>>>>>> aa397ef8 (feat(explore): reveal current file)
         close_explorer, "close explorer",
     );
 }
@@ -2745,6 +2750,7 @@ fn file_picker_in_current_directory(cx: &mut Context) {
 // ));
 // }
 
+// <<<<<<< HEAD
 // fn open_explorer_recursion(cx: &mut Context) {
 //     cx.callback = Some(Box::new(
 //         |compositor: &mut Compositor, cx: &mut compositor::Context| {
@@ -2757,6 +2763,27 @@ fn file_picker_in_current_directory(cx: &mut Context) {
 //         },
 //     ));
 // }
+// =======
+// fn reveal_current_file(cx: &mut Context) {
+//     cx.callback = Some(Box::new(
+//         |compositor: &mut Compositor, cx: &mut compositor::Context| {
+//             if let Some(editor) = compositor.find::<ui::EditorView>() {
+//                 match editor.explorer.as_mut() {
+//                     Some(explore) => explore.content.reveal_current_file(cx),
+//                     None => match ui::Explorer::new(cx) {
+//                         Ok(explore) => {
+//                             let mut explorer = overlayed(explore);
+//                             explorer.content.reveal_current_file(cx);
+//                             editor.explorer = Some(explorer);
+//                         }
+//                         Err(err) => cx.editor.set_error(format!("{}", err)),
+//                     },
+//                 }
+//             }
+//         },
+//     ));
+// }
+// >>>>>>> aa397ef8 (feat(explore): reveal current file)
 
 fn close_explorer(cx: &mut Context) {
     cx.callback = Some(Box::new(|compositor: &mut Compositor, _| {
