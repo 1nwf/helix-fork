@@ -62,4 +62,3 @@ Discuss the project on the community [Matrix Space](https://matrix.to/#/#helix-c
 # Credits
 
 Thanks to [@JakeHL](https://github.com/JakeHL) for designing the logo!
-# helix-fork
