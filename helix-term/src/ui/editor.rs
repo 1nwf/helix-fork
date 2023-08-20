@@ -553,10 +553,9 @@ impl EditorView {
             .try_get("ui.bufferline")
             .unwrap_or_else(|| editor.theme.get("ui.statusline.inactive"));
 
-        let current_doc = view!(editor).doc;
         let mut x = viewport.x;
+        let current_doc = view!(editor).doc;
         let width = viewport.width + x;
-        let mut rem_width = width;
 
         for doc in editor.documents() {
             let fname = doc
@@ -574,13 +573,13 @@ impl EditorView {
             };
 
             let text = format!(" {}{} ", fname, if doc.is_modified() { "[+]" } else { "" });
-            let prev_x = x;
-            x = surface
-                .set_stringn(x, viewport.y, text, rem_width as usize, style)
-                .0;
-            rem_width = rem_width.saturating_sub(x - prev_x);
+            let rem_width = width.saturating_sub(x);
 
-            if rem_width == 0 {
+            x = surface
+                .set_stringn(x, viewport.y, text.clone(), rem_width as usize, style)
+                .0;
+
+            if x >= width {
                 break;
             }
         }
