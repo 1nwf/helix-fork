@@ -553,8 +553,10 @@ impl EditorView {
             .try_get("ui.bufferline")
             .unwrap_or_else(|| editor.theme.get("ui.statusline.inactive"));
 
-        let mut x = viewport.x;
         let current_doc = view!(editor).doc;
+        let mut x = viewport.x;
+        let width = viewport.width + x;
+        let mut rem_width = width;
 
         for doc in editor.documents() {
             let fname = doc
@@ -572,14 +574,13 @@ impl EditorView {
             };
 
             let text = format!(" {}{} ", fname, if doc.is_modified() { "[+]" } else { "" });
-            let used_width = viewport.x.saturating_sub(x);
-            let rem_width = surface.area.width.saturating_sub(used_width);
-
+            let prev_x = x;
             x = surface
                 .set_stringn(x, viewport.y, text, rem_width as usize, style)
                 .0;
+            rem_width = rem_width.saturating_sub(x - prev_x);
 
-            if x >= surface.area.right() {
+            if rem_width == 0 {
                 break;
             }
         }
@@ -1456,18 +1457,22 @@ impl Component for EditorView {
         // if the terminal size suddenly changed, we need to trigger a resize
         cx.editor.resize(editor_area);
 
+        let mut explorer_width = 0;
         if let Some(explorer) = self.explorer.as_mut() {
             if !explorer.is_focus() {
-                let area = if use_bufferline {
-                    area.clip_top(1)
-                } else {
-                    area
-                };
                 explorer.render(area, surface, cx);
+            }
+            if explorer.is_opened() {
+                explorer_width = explorer.column_width().saturating_add(2);
             }
         }
 
         if use_bufferline {
+            let area = match config.explorer.position {
+                ExplorerPosition::Left => area.clip_left(explorer_width),
+                ExplorerPosition::Right => area.clip_right(explorer_width),
+            };
+
             Self::render_bufferline(cx.editor, area.with_height(1), surface);
         }
 
@@ -1548,11 +1553,6 @@ impl Component for EditorView {
 
         if let Some(explore) = self.explorer.as_mut() {
             if explore.is_focus() {
-                let area = if use_bufferline {
-                    area.clip_top(1)
-                } else {
-                    area
-                };
                 explore.render(area, surface, cx);
             }
         }
