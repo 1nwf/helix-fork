@@ -26,7 +26,10 @@ inherits = "release"
 lto = "fat"
 codegen-units = 1
 # strip = "debuginfo" # TODO: or strip = true
+strip = true
+debug = false
 opt-level = 3
+panic = "abort"
 
 [profile.integration]
 inherits = "test"
