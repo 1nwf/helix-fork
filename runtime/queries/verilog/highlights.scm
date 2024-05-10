@@ -301,11 +301,11 @@
 
 (generate_block_identifier) @comment
 
-[
-  "["
-  "]"
-  "("
-  ")"
-] @punctuation.bracket
+; [
+;   "["
+;   "]"
+;   "("
+;   ")"
+; ] @punctuation.bracket
 
-(ERROR) @error
+; (ERROR) @error

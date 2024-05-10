@@ -1989,7 +1989,9 @@ impl Editor {
                 _ = helix_event::redraw_requested() => {
                     if  !self.needs_redraw{
                         self.needs_redraw = true;
-                        let timeout = Instant::now() + Duration::from_millis(33);
+                        let delay: f64 = 1_000_000. / 60_000.;
+                        let timeout_delay = (1000. * delay) as u64;
+                        let timeout = Instant::now() + Duration::from_micros(timeout_delay);
                         if timeout < self.idle_timer.deadline() && timeout < self.redraw_timer.deadline(){
                             self.redraw_timer.as_mut().reset(timeout)
                         }
